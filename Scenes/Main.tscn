@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Entities/Player/player_down_idle_2.png" type="Texture" id=1]
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=2]
@@ -37,6 +37,8 @@
 [ext_resource path="res://Scripts/GUI/ManaBar.gd" type="Script" id=35]
 [ext_resource path="res://Fonts/Font.tres" type="DynamicFont" id=36]
 [ext_resource path="res://Entities/GUI/potions.png" type="Texture" id=37]
+[ext_resource path="res://Scenes/Skeleton.tscn" type="PackedScene" id=38]
+[ext_resource path="res://Scenes/SkeletonSpawner.tscn" type="PackedScene" id=39]
 
 [sub_resource type="SpriteFrames" id=2]
 animations = [ {
@@ -265,12 +267,6 @@ margin_right = 317.0
 margin_bottom = 178.0
 color = Color( 0, 0, 0, 0.627451 )
 
-[node name="Sprite" type="Sprite" parent="CanvasLayer/ManaPotions"]
-position = Vector2( 10, 10 )
-texture = ExtResource( 37 )
-region_enabled = true
-region_rect = Rect2( 16, 0, 16, 16 )
-
 [node name="Label" type="Label" parent="CanvasLayer/ManaPotions"]
 margin_left = 19.0
 margin_top = 6.0
@@ -279,6 +275,16 @@ margin_bottom = 16.0
 custom_fonts/font = ExtResource( 36 )
 text = "0"
 align = 2
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ManaPotions"]
+position = Vector2( 10, 10 )
+texture = ExtResource( 37 )
+region_enabled = true
+region_rect = Rect2( 16, 0, 16, 16 )
+
+[node name="Skeleton" parent="." instance=ExtResource( 38 )]
+
+[node name="SkeletonSpawner" parent="." instance=ExtResource( 39 )]
 
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Health" method="_on_Player_player_stats_changed"]
 [connection signal="player_stats_changed" from="Player" to="CanvasLayer/Mana" method="_on_Player_player_stats_changed"]
