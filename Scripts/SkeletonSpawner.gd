@@ -33,7 +33,6 @@ func instance_skeleton():
 	# Instance the skeleton scene and add it to the scene tree
 	var skeleton = skeleton_scene.instance()
 	add_child(skeleton)
-	
 	# Connect Skeleton's death signal to the spawner
 	skeleton.connect("death", self, "_on_Skeleton_death")
 	
